@@ -22,7 +22,7 @@ class Main(Gtk.Window):
         self.set_default_size(700, 460)
         self.connect("delete-event", self.close)
         self.set_icon_from_file(fn.os.path.join(
-            GUI.base_dir, 'images/arcolinux.svg'))
+            GUI.base_dir, '../icons/hicolor/scalable/apps/betterlockscreen.svg'))
         self.set_position(Gtk.WindowPosition.CENTER)
 
         self.timeout_id = None
