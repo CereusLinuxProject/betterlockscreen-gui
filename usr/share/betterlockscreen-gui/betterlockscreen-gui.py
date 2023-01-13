@@ -10,7 +10,6 @@ import GUI
 import Support
 import threading as th
 import webbrowser
-import Splash
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk, GdkPixbuf, Gdk, GLib # noqa
 
@@ -55,7 +54,7 @@ class Main(Gtk.Window):
 
         self.hbox3.pack_start(scrolled, True, True, 0)
 
-        splScr = Splash.splashScreen()
+
 
         while Gtk.events_pending():
             Gtk.main_iteration()
@@ -66,7 +65,7 @@ class Main(Gtk.Window):
         t.start()
         t.join()
 
-        splScr.destroy()
+
 
         GUI.GUI(self, Gtk, GdkPixbuf, Gdk, th, fn)
 
