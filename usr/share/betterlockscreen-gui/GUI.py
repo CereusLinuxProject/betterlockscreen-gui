@@ -141,32 +141,6 @@ def GUI(self, Gtk, GdkPixbuf, Gdk, th, fn):
     #hbox2.pack_start(hbox4, True, False, 0)
 
     # ==========================================================
-    #                       RESOLUTION
-    # ==========================================================
-    # self.blur = Gtk.Entry()
-    ad1 = Gtk.Adjustment(100, 0, 100, 1, 100, 0)
-
-    self.blur = Gtk.Scale(
-        orientation=Gtk.Orientation.HORIZONTAL, adjustment=ad1)
-    self.blur.set_digits(0)
-    self.blur.set_hexpand(True)
-    self.blur.set_draw_value(True)
-    # self.blur.set_has_origin(True)
-    self.blur.set_size_request(100, 0)
-    self.blur.set_valign(Gtk.Align.START)
-
-    # self.blur.set_text("1.0")
-    # self.blur.set_max_length(4)
-    # self.blur.set_width_chars(True)
-    # self.blur.set_size_request(67, 0)
-    label = Gtk.Label("Blur intensity")
-
-    hbox7.pack_start(label, False, False, 0)
-    hbox7.pack_start(self.blur, False, False, 0)
-
-    hbox2.pack_start(hbox7, True, False, 0)
-
-    # ==========================================================
     #                       PACK TO WINDOW
     # ==========================================================
 
