@@ -99,27 +99,32 @@ class Main(Gtk.Window):
         else:
             self.btnset.set_sensitive(False)
             self.status.set_text("creating lockscreen images....wait for the message at the top")
+            self.spinner.set_size_request(20, 20)
+            self.spinner.start()
             t = th.Thread(target=self.set_lockscreen, args=())
             t.daemon = True
             t.start()
 
     def on_preview_clicked(self, widget):
-        prevcmd = ["betterlockscreen", "-l"]
+        prevcmd = ["betterlockscreen", "-l", "dimblur"]
         fn.subprocess.call(prevcmd, shell=False)
 
     def set_lockscreen(self):
 					
-        command = ["betterlockscreen", "-u", self.image_path, "| cut -c14-"]
-        command_string = " ".join(command)
+        command = ["betterlockscreen", "-u", self.image_path,
+                       "--blur", str(int(self.blur.get_value())/100),
+                       "--dim", str(int(self.dim.get_value()))]
+        #command_string = " ".join(command)
         try:
             #with fn.subprocess.Popen(command, bufsize=1, stdout=fn.subprocess.PIPE, universal_newlines=True) as p:
             #    for line in p.stdout:
             #        GLib.idle_add(self.status.set_text, line.strip())
             fn.subprocess.call(command, shell=False)
             fn.show_in_app_notification(self, "Lockscreen set successfully")
+            self.spinner.stop()
             GLib.idle_add(self.btnset.set_sensitive, True)
             GLib.idle_add(self.status.set_text, "")
-            subprocess.run(["python3", "output.py",command_string])
+            #subprocess.run(["python3", "output.py",command_string])
         except:  # noqa
             GLib.idle_add(self.status.set_text, "ERROR: is betterlockscreen installed?")
             GLib.idle_add(self.btnset.set_sensitive, True)

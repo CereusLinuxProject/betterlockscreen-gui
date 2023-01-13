@@ -130,20 +130,48 @@ def GUI(self, Gtk, GdkPixbuf, Gdk, th, fn):
     # ==========================================================
 
     hbox5.pack_start(self.status, True, False, 0)
+    self.spinner = Gtk.Spinner()
+    self.spinner.set_size_request(50, 50)
+
+    # Add the spinner to your layout
+    hbox5.pack_start(self.spinner, True, True, 0)
+    
+    # ==========================================================
+    #                       BLUR
+    # ==========================================================
+    # self.blur = Gtk.Entry()
+    ad1 = Gtk.Adjustment(100, 0, 100, 1, 100, 0)
+
+    self.blur = Gtk.Scale(
+        orientation=Gtk.Orientation.HORIZONTAL, adjustment=ad1)
+    self.blur.set_digits(0)
+    self.blur.set_hexpand(True)
+    self.blur.set_draw_value(True)
+    self.blur.set_size_request(100, 0)
+    self.blur.set_valign(Gtk.Align.START)
+    label = Gtk.Label("Blur intensity")
+
+    hbox7.pack_start(label, False, False, 0)
+    hbox7.pack_start(self.blur, False, False, 0)
+
+    hbox2.pack_start(hbox7, True, False, 0)
 
     # ==========================================================
-    #                       RESOLUTION
+    #                       DIM
     # ==========================================================
-    #self.res = Gtk.ComboBoxText()
-    #for x in fn.resolutions:
-    #    self.res.append_text(x)
-    #self.res.set_active(12)
-    #self.res.set_size_request(100, 0)
-    #label = Gtk.Label("Resolution")
-    #hbox4.pack_start(label, False, False, 0)
-    #hbox4.pack_start(self.res, False, False, 0)
+    # self.blur = Gtk.Entry()
+    ad2 = Gtk.Adjustment(100, 0, 100, 2, 100, 0)
+    self.dim = Gtk.Scale(orientation=Gtk.Orientation.HORIZONTAL, adjustment=ad2)
+    self.dim.set_digits(0)
+    self.dim.set_hexpand(True)
+    self.dim.set_draw_value(True)
+    self.dim.set_size_request(100, 0)
+    self.dim.set_valign(Gtk.Align.START)
+    label = Gtk.Label("Dim intensity")
 
-    #hbox2.pack_start(hbox4, True, False, 0)
+    hbox7.pack_start(label, False, False, 0)
+    hbox7.pack_start(self.dim, False, False, 0)
+
 
     # ==========================================================
     #                       PACK TO WINDOW
