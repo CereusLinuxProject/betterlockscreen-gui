@@ -103,9 +103,13 @@ class Main(Gtk.Window):
             t.daemon = True
             t.start()
 
+    def on_preview_clicked(self, widget):
+        prevcmd = ["betterlockscreen", "-l"]
+        fn.subprocess.call(prevcmd, shell=False)
+
     def set_lockscreen(self):
 					
-        command = ["betterlockscreen", "-u", self.image_path]
+        command = ["betterlockscreen", "-u", self.image_path, "| cut -c14-"]
         command_string = " ".join(command)
         try:
             #with fn.subprocess.Popen(command, bufsize=1, stdout=fn.subprocess.PIPE, universal_newlines=True) as p:

@@ -81,7 +81,12 @@ def GUI(self, Gtk, GdkPixbuf, Gdk, th, fn):
     self.btnset = Gtk.Button(label="Apply Image")
     self.btnset.connect("clicked", self.on_apply_clicked)
     hbox2.pack_end(self.btnset, False, False, 0)
-
+    # ==========================================================
+    #                       BUTTON
+    # ==========================================================
+    self.btnset = Gtk.Button(label="Open BetterLockScreen")
+    self.btnset.connect("clicked", self.on_preview_clicked)
+    hbox2.pack_end(self.btnset, False, False, 0)
     # ==========================================================
     #                       PATREON
     # ==========================================================
