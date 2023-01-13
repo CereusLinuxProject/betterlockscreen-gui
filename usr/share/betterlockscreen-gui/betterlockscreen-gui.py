@@ -8,9 +8,9 @@ import gi
 import Functions as fn
 import GUI
 import Support
-import output
 import threading as th
 import webbrowser
+import subprocess
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk, GdkPixbuf, Gdk, GLib # noqa
 
@@ -106,7 +106,7 @@ class Main(Gtk.Window):
     def set_lockscreen(self):
 					
         command = ["betterlockscreen", "-u", self.image_path]
-
+        command_string = " ".join(command)
         try:
             #with fn.subprocess.Popen(command, bufsize=1, stdout=fn.subprocess.PIPE, universal_newlines=True) as p:
             #    for line in p.stdout:
@@ -115,10 +115,10 @@ class Main(Gtk.Window):
             fn.show_in_app_notification(self, "Lockscreen set successfully")
             GLib.idle_add(self.btnset.set_sensitive, True)
             GLib.idle_add(self.status.set_text, "")
+            subprocess.run(["python3", "output.py",command_string])
         except:  # noqa
             GLib.idle_add(self.status.set_text, "ERROR: is betterlockscreen installed?")
             GLib.idle_add(self.btnset.set_sensitive, True)
-
     def on_item_clicked(self, widget, data):
         for x in data:
             self.image_path = x.get_name()
