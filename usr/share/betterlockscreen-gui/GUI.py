@@ -12,7 +12,7 @@ def GUI(self, Gtk, GdkPixbuf, Gdk, th, fn):
 
     hbox1 = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
     hbox2 = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
-
+    separator = Gtk.HSeparator()
     #hbox4 = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
     hbox5 = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
 
@@ -51,7 +51,7 @@ def GUI(self, Gtk, GdkPixbuf, Gdk, th, fn):
     btndefault = Gtk.Button(label="Default")
 
     btnsearch.connect("clicked", self.on_load_clicked, self.fb)
-    btndefault.connect("clicked", self.on_default_clicked, self.fb)
+    #btndefault.connect("clicked", self.on_default_clicked, self.fb)
     btnbrowse.connect("clicked", self.on_browse_clicked)
 
     btnsearch.set_size_request(130, 0)
@@ -59,7 +59,7 @@ def GUI(self, Gtk, GdkPixbuf, Gdk, th, fn):
     hbox6.pack_start(self.loc, False, False, 0)
     hbox6.pack_start(btnbrowse, False, False, 5)
     hbox6.pack_start(btnsearch, False, False, 0)
-    hbox6.pack_end(btndefault, False, False, 0)
+    #hbox6.pack_end(btndefault, False, False, 0)
 
     # ==========================================================
     #                       LOCATIONS
@@ -91,36 +91,6 @@ def GUI(self, Gtk, GdkPixbuf, Gdk, th, fn):
     #                       PATREON
     # ==========================================================
 
-    # pE2 = Gtk.EventBox()
-    # pE3 = Gtk.EventBox()
-
-    # pbp2 = GdkPixbuf.Pixbuf().new_from_file_at_size(
-    #     os.path.join(base_dir, 'images/patreon.png'), 28, 28)
-    # pimage2 = Gtk.Image().new_from_pixbuf(pbp2)
-
-    # pbp3 = GdkPixbuf.Pixbuf().new_from_file_at_size(
-    #     os.path.join(base_dir, 'images/paypal.png'), 28, 28)
-    # pimage3 = Gtk.Image().new_from_pixbuf(pbp3)
-
-    # pE2.add(pimage2)
-    # pE3.add(pimage3)
-
-    # pE2.connect("button_press_event", self.on_social_clicked,
-    #             "https://www.patreon.com/hefftor")
-
-    # pE3.connect("button_press_event", self.on_social_clicked,
-    #             "https://streamlabs.com/bradheffernan1")
-
-    # pE2.set_property("has-tooltip", True)
-    # pE3.set_property("has-tooltip", True)
-
-    # pE2.connect("query-tooltip", self.tooltip_callback,
-    #             "Support Brad on Patreon")
-    # pE3.connect("query-tooltip", self.tooltip_callback,
-    #             "Buy Brad a coffee")
-
-    # hbox2.pack_start(pE2, False, False, 0)  # Patreon
-    # hbox2.pack_start(pE3, False, False, 0)  # Patreon
     credits = Gtk.LinkButton(uri="", label="Credits")
     credits.connect("clicked", self.on_support_clicked)
     hbox2.pack_start(credits, False, False, 0)  # Patreon
@@ -176,10 +146,15 @@ def GUI(self, Gtk, GdkPixbuf, Gdk, th, fn):
     # ==========================================================
     #                       PACK TO WINDOW
     # ==========================================================
+    hbox_search_load = Gtk.HBox()
+    hbox_search_load.pack_start(hbox6, False, False, 0)  # load row
+    hbox_search_load.pack_start(separator, False, False, 6)
+    hbox_search_load.pack_start(hbox8, False, False, 0)  # search row
+
+
 
     self.vbox.pack_start(hbox1, False, False, 0)  # notify
-    self.vbox.pack_start(hbox6, False, False, 0)  # load row
-    self.vbox.pack_start(hbox8, False, False, 0)  # search row
+    self.vbox.pack_start(hbox_search_load, False, False, 0)
     self.vbox.pack_start(self.hbox3, True, True, 0)  # IMAGES
     self.vbox.pack_start(hbox5, False, False, 0)  # status
     self.vbox.pack_end(hbox2, False, False, 0)  # Settings row
