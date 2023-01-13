@@ -8,6 +8,7 @@ import gi
 import Functions as fn
 import GUI
 import Support
+import output
 import threading as th
 import webbrowser
 gi.require_version('Gtk', '3.0')
@@ -16,7 +17,7 @@ from gi.repository import Gtk, GdkPixbuf, Gdk, GLib # noqa
 
 class Main(Gtk.Window):
     def __init__(self):
-        super(Main, self).__init__(title="ArcoLinux BetterLockScreen")
+        super(Main, self).__init__(title="BetterLockScreen Image Selector")
         self.set_border_width(10)
         self.set_default_size(700, 460)
         self.connect("delete-event", self.close)
@@ -92,7 +93,6 @@ class Main(Gtk.Window):
             sup.destroy()
 
     def on_apply_clicked(self, widget):
-        # print(str(int(self.blur.get_value())/100))
         if self.image_path is None:
             fn.show_in_app_notification(self,
                                         "You need to select an image first")
@@ -104,8 +104,9 @@ class Main(Gtk.Window):
             t.start()
 
     def set_lockscreen(self):
-        command = ["betterlockscreen", "-u", self.image_path,
-                       "--blur", str(int(self.blur.get_value())/100)]
+					
+        command = ["betterlockscreen", "-u", self.image_path]
+
         try:
             #with fn.subprocess.Popen(command, bufsize=1, stdout=fn.subprocess.PIPE, universal_newlines=True) as p:
             #    for line in p.stdout:
@@ -169,17 +170,17 @@ class Main(Gtk.Window):
             paths = fn.get_saved_path()
             if len(paths) < 1:
                 if len(text) < 1:
-                    paths = "/usr/share/backgrounds/arcolinux"
+                    paths = "/usr/share/backgrounds/"
                     if not fn.os.path.isdir(paths):
-                        paths = "/usr/share/backgrounds/arcolinux"
+                        paths = "/usr/share/backgrounds/"
                     if not fn.os.path.isdir(paths):
                         return 0
                 else:
                     paths = text
         else:
-            paths = "/usr/share/backgrounds/arcolinux"
+            paths = "/usr/share/backgrounds/"
             if not fn.os.path.isdir(paths):
-                paths = "/usr/share/backgrounds/arcolinux"
+                paths = "/usr/share/backgrounds/"
             if not fn.os.path.isdir(paths):
                 return 0
 
@@ -247,7 +248,7 @@ if __name__ == "__main__":
                                buttons=Gtk.ButtonsType.YES_NO,
                                text="Lock File Found")
         md.format_secondary_markup(
-            "The lock file has been found. This indicates there is already an instance of <b>ArcoLinux Betterlockscreen GUI</b> running.\n\
+            "The lock file has been found. This indicates there is already an instance of <b>BetterLockScreen Image Selector</b> running.\n\
 click yes to remove the lock file and try running again")  # noqa
 
         result = md.run()
