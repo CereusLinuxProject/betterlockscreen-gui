@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Action
+Name=Set as lockscreen background
+Name[es]=Definir como fondo del salvapantallas
+Icon=user-desktop
+Profiles=profile-zero;
+
+[X-Action-Profile profile-zero]
+MimeTypes=image/*;
+Exec=betterlockscreen -u %f
+Name=Default profile
+SelectionCount==1
