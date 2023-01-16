@@ -110,15 +110,16 @@ def GUI(self, Gtk, GdkPixbuf, Gdk, th, fn):
     #                       BLUR
     # ==========================================================
     # self.blur = Gtk.Entry()
-    ad1 = Gtk.Adjustment(100, 0, 100, 1, 100, 0)
+    ad1 = Gtk.Adjustment(100, 0, 100, 0, 100, 0)
 
     self.blur = Gtk.Scale(
         orientation=Gtk.Orientation.HORIZONTAL, adjustment=ad1)
     self.blur.set_digits(0)
     self.blur.set_hexpand(True)
     self.blur.set_draw_value(True)
-    self.blur.set_value(100)
+    self.blur.set_value(0)
     self.blur.set_size_request(100, 0)
+
     self.blur.set_valign(Gtk.Align.START)
     label = Gtk.Label("Blur intensity")
 

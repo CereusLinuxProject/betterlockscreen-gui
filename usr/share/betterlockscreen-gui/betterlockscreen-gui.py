@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 
 # =================================================================
 # =                  Author: Brad Heffernan                       =
@@ -110,10 +110,15 @@ class Main(Gtk.Window):
         fn.subprocess.call(prevcmd, shell=False)
 
     def set_lockscreen(self):
-					
-        command = ["betterlockscreen", "-u", self.image_path,
+        blur_value = int(self.blur.get_value())
+        if blur_value <= 1:
+            command = ["betterlockscreen", "-u", self.image_path,
+                           "--dim", str(int(self.dim.get_value()))]
+        else:
+            command = ["betterlockscreen", "-u", self.image_path,
                        "--blur", str(int(self.blur.get_value())/100),
                        "--dim", str(int(self.dim.get_value()))]
+
         #command_string = " ".join(command)
         try:
             #with fn.subprocess.Popen(command, bufsize=1, stdout=fn.subprocess.PIPE, universal_newlines=True) as p:
