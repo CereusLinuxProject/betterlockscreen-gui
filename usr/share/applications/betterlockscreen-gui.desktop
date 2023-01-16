@@ -1,8 +1,9 @@
 [Desktop Entry]
 Name=BetterLockScreen configuration tool
+Name[es]=Herramienta de configuración de BetterLockScreen
 GenericName=Betterlockscreen
 Comment=Change the image for the lockscreen
-Exec=/usr/bin/arcolinux-betterlockscreen
+Exec=betterlockscreen-gui
 Icon=betterlockscreen
 Terminal=false
 Type=Application
