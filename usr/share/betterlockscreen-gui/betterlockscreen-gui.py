@@ -113,6 +113,7 @@ class Main(Gtk.Window):
         blur_value = int(self.blur.get_value())
         if blur_value <= 1:
             command = ["betterlockscreen", "-u", self.image_path,
+                           "--blur", "0",
                            "--dim", str(int(self.dim.get_value()))]
         else:
             command = ["betterlockscreen", "-u", self.image_path,
