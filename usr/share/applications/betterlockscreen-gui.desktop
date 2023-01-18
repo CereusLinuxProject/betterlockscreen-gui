@@ -1,8 +1,8 @@
 [Desktop Entry]
 Name=BetterLockScreen configuration tool
 Name[es]=Herramienta de configuración de BetterLockScreen
-GenericName=Betterlockscreen
-Comment=Change the image for the lockscreen
+Comment=Manage lockscreen configuration
+Comment[es]=Administrar configuración de la pantalla de bloqueo
 Exec=betterlockscreen-gui
 Icon=betterlockscreen
 Terminal=false
