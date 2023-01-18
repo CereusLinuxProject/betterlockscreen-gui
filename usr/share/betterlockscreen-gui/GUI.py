@@ -2,8 +2,8 @@
 # =                  Author: Brad Heffernan                       =
 # =================================================================
 
-from Functions import base_dir, os
-
+from Functions import base_dir, os, blsconf, blur_level, dim_level
+import subprocess
 
 def GUI(self, Gtk, GdkPixbuf, Gdk, th, fn):
 
@@ -30,7 +30,7 @@ def GUI(self, Gtk, GdkPixbuf, Gdk, th, fn):
 
     self.notification_label = Gtk.Label()
 
-    pb_panel = GdkPixbuf.Pixbuf().new_from_file(base_dir + '/images/panel.png')
+    pb_panel = GdkPixbuf.Pixbuf().new_from_file(fn.base_dir + '/images/panel.png')
     panel = Gtk.Image().new_from_pixbuf(pb_panel)
 
     overlayFrame = Gtk.Overlay()
@@ -109,6 +109,7 @@ def GUI(self, Gtk, GdkPixbuf, Gdk, th, fn):
     # ==========================================================
     #                       BLUR
     # ==========================================================
+
     # self.blur = Gtk.Entry()
     ad1 = Gtk.Adjustment(100, 0, 100, 0, 100, 0)
 
@@ -117,7 +118,7 @@ def GUI(self, Gtk, GdkPixbuf, Gdk, th, fn):
     self.blur.set_digits(0)
     self.blur.set_hexpand(True)
     self.blur.set_draw_value(True)
-    self.blur.set_value(0)
+    self.blur.set_value(fn.blur_level)
     self.blur.set_size_request(100, 0)
 
     self.blur.set_valign(Gtk.Align.START)
@@ -137,7 +138,7 @@ def GUI(self, Gtk, GdkPixbuf, Gdk, th, fn):
     self.dim.set_digits(0)
     self.dim.set_hexpand(True)
     self.dim.set_draw_value(True)
-    self.dim.set_value(1)
+    self.dim.set_value(fn.dim_level)
     self.dim.set_size_request(100, 0)
     self.dim.set_valign(Gtk.Align.START)
     label = Gtk.Label("Dim intensity")

@@ -14,6 +14,7 @@ from gi.repository import GLib, Gtk  # noqa
 home = expanduser("~")
 base_dir = os.path.dirname(os.path.realpath(__file__))
 config = home + "/.config/betterlockscreen-gui/"
+blsconf = home + "/.config/betterlockscreenrc"
 settings = "settings.conf"
 resolutions = [
     "640x360",
@@ -36,6 +37,20 @@ resolutions = [
     "3440x1440",
     "3840x2160"
 ]
+
+if os.path.exists("/usr/share/betterlockscreen-gui/get_values.sh"):
+    get_values = "/usr/share/betterlockscreen-gui/get_values.sh"
+else:
+    get_values = "./get-values.sh"
+
+blur_output = subprocess.run([get_values,'-b'], check=True, capture_output=True).stdout
+blur_decoded = blur_output.decode('utf8', 'strict')
+blur_level = int(blur_decoded.replace('\n', ''))
+
+dim_output = subprocess.run([get_values,'-d'], check=True, capture_output=True).stdout
+dim_decoded = dim_output.decode('utf8', 'strict')
+dim_level = int(dim_decoded.replace('\n', ''))
+
 # ================================================
 #                   GLOBALS
 # ================================================

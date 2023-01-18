@@ -105,6 +105,33 @@ class Main(Gtk.Window):
             t.daemon = True
             t.start()
 
+    def save_current_image(self):
+        image_conf = open(fn.home + "/.config/lockscreen-bg.conf", "w")
+        image_conf.write(self.image_path)
+        image_conf.close()
+
+    def save_blur_value(self):
+        blur_level_gui = int(self.blur.get_value())
+        old_level = "blur_level=" + str("{:.2f}".format(fn.blur_level/100))
+        new_level = "blur_level=" + str(blur_level_gui/100)
+        with open(fn.blsconf, 'r') as file:
+            filedata = file.read()
+            filedata= filedata.replace(old_level, new_level)
+            print(filedata)
+        with open(fn.blsconf, 'w') as file:
+            file.write(filedata)
+
+    def save_dim_value(self):
+        dim_level_gui = int(self.dim.get_value())
+        old_level = "dim_level=" + str(fn.dim_level)
+        new_level = "dim_level=" + str(dim_level_gui)
+        with open(fn.blsconf, 'r') as file:
+            filedata = file.read()
+            filedata= filedata.replace(old_level, new_level)
+            print(filedata)
+        with open(fn.blsconf, 'w') as file:
+            file.write(filedata)
+
     def on_preview_clicked(self, widget):
         prevcmd = ["betterlockscreen", "-l", "dimblur"]
         fn.subprocess.call(prevcmd, shell=False)
@@ -119,6 +146,10 @@ class Main(Gtk.Window):
             command = ["betterlockscreen", "-u", self.image_path,
                        "--blur", str(int(self.blur.get_value())/100),
                        "--dim", str(int(self.dim.get_value()))]
+
+        self.save_current_image()
+        self.save_blur_value()
+        self.save_dim_value()
 
         #command_string = " ".join(command)
         try:
