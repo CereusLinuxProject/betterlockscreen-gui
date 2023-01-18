@@ -1,0 +1,5 @@
+#!/bin/sh
+if [ -f /usr/bin/betterlockscreen ]; then
+    betterlockscreen -u $(cat ~/.config/lockscreen-bg.conf)
+    notify-send -i info -a resolution-hooks "Lockscreen updated"
+fi

@@ -30,7 +30,7 @@ def GUI(self, Gtk, GdkPixbuf, Gdk, th, fn):
 
     self.notification_label = Gtk.Label()
 
-    pb_panel = GdkPixbuf.Pixbuf().new_from_file(fn.base_dir + '/images/panel.png')
+    pb_panel = GdkPixbuf.Pixbuf().new_from_file(base_dir + '/images/panel.png')
     panel = Gtk.Image().new_from_pixbuf(pb_panel)
 
     overlayFrame = Gtk.Overlay()
