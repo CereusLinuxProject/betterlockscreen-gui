@@ -117,7 +117,6 @@ class Main(Gtk.Window):
         with open(fn.blsconf, 'r') as file:
             filedata = file.read()
             filedata= filedata.replace(old_level, new_level)
-            print(filedata)
         with open(fn.blsconf, 'w') as file:
             file.write(filedata)
 
@@ -128,7 +127,6 @@ class Main(Gtk.Window):
         with open(fn.blsconf, 'r') as file:
             filedata = file.read()
             filedata= filedata.replace(old_level, new_level)
-            print(filedata)
         with open(fn.blsconf, 'w') as file:
             file.write(filedata)
 
@@ -139,11 +137,11 @@ class Main(Gtk.Window):
     def set_lockscreen(self):
         blur_value = int(self.blur.get_value())
         if blur_value <= 1:
-            command = ["betterlockscreen", "-u", self.image_path,
+            command = ["betterlockscreen", "-u", str(self.image_path),
                            "--blur", "0",
                            "--dim", str(int(self.dim.get_value()))]
         else:
-            command = ["betterlockscreen", "-u", self.image_path,
+            command = ["betterlockscreen", "-u", str(self.image_path),
                        "--blur", str(int(self.blur.get_value())/100),
                        "--dim", str(int(self.dim.get_value()))]
 

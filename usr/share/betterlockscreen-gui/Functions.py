@@ -38,8 +38,8 @@ resolutions = [
     "3840x2160"
 ]
 
-if os.path.exists("/usr/share/betterlockscreen-gui/get_values.sh"):
-    get_values = "/usr/share/betterlockscreen-gui/get_values.sh"
+if os.path.exists("/usr/share/betterlockscreen-gui/get-values.sh"):
+    get_values = "/usr/share/betterlockscreen-gui/get-values.sh"
 else:
     get_values = "./get-values.sh"
 
