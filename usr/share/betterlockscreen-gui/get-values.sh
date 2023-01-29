@@ -3,7 +3,7 @@ USER_CONF="$HOME/.config/betterlockscreenrc"
 
 # If there is no config file, create it
 if [ ! -f $USER_CONF ]; then
-    echo "# betterlockscreenrc\nblur_level=0\ndim_level=0" > $USER_CONF
+    printf "# betterlockscreenrc\nblur_level=0\ndim_level=0" > $USER_CONF
 fi 
 
 while getopts "bd" opt; do
