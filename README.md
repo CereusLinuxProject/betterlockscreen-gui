@@ -12,3 +12,5 @@ This project was forked from <a href="https://github.com/arcolinux/arcolinux-bet
 For XBPS distributions, <code>betterlockscreen-gui</code> is available in <a href="https://sourceforge.net/projects/cereus-linux/files/repos/cereus-extra/">cereus-extra</a> repository. If using Cereus Linux LXQt, it is already included in live image. To install it manually, run:
 
     # xbps-install -S betterlockscreen-gui
+
+    
