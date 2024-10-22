@@ -1,6 +1,6 @@
 # Betterlockscreen Configuration tool
 
-<a href="https://codeberg.org/cereus-linux/mklive">
+<a href="https://codeberg.org/cereus-linux/betterlockscreen-gui">
     <img alt="Get it on Codeberg" src="https://get-it-on.codeberg.org/get-it-on-white-on-black.png" height="60">
 </a>
 
